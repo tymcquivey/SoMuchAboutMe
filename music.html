@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Song Lyric Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .song-output {
+            margin-top: 30px;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #333;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            display: none;  /* Initially hidden */
+        }
+
+        .song-output p {
+            color: #333;
+            font-size: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a class="navbar-brand" href="../startbootstrap-clean-blog-gh-pages/index.html">Ty McQuivey</a>
+    <div class="container">
+        <h1>Personalized Song Lyric Generator</h1>
+        <p>Fill in the details to generate a personalized song lyric!</p>
+
+        <form id="lyricForm">
+            <label for="name">What's your name?</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="color">What's your favorite color?</label>
+            <input type="text" id="color" placeholder="Enter your favorite color" required>
+
+            <label for="genre">What's your favorite music genre?</label>
+            <input type="text" id="genre" placeholder="Enter your favorite genre" required>
+
+            <button type="submit">Generate Lyrics</button>
+        </form>
+
+        <div id="songOutput" class="song-output">
+            <!-- Generated song lyrics will appear here -->
+        </div>
+    </div>
+
+    <div class="nav-section">
+        <a href="../startbootstrap-clean-blog-gh-pages/index.html" class="return-home">Return to Home</a>
+    </div>
+
+    <script>
+        // Wait for the DOM to be ready before we add the event listener
+        document.getElementById("lyricForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get the user input from the form fields
+            let name = document.getElementById("name").value;
+            let color = document.getElementById("color").value;
+            let genre = document.getElementById("genre").value;
+
+            // Generate personalized song lyrics
+            let lyrics = generateLyrics(name, color, genre);
+
+            // Display the generated lyrics
+            let output = document.getElementById("songOutput");
+            output.innerHTML = `<p>${lyrics}</p>`; // Insert the lyrics into the output div
+            output.style.display = "block";  // Show the output div with the lyrics
+        });
+
+        // Function to generate the personalized song lyrics
+        function generateLyrics(name, color, genre) {
+            return `
+                <strong>🎶 A Song for ${name} 🎶</strong><br><br>
+                In the rhythm of ${genre}, we find our groove,<br>
+                With a heart as bright as ${color}, you always improve.<br><br>
+
+                You're the melody in my heart, always playing true,<br>
+                And every note I sing, I think of you.<br><br>
+
+                ${name}, you're the song that never ends,<br>
+                With every beat, the world bends.<br><br>
+
+                Let’s dance to this tune, let’s sing to this sound,<br>
+                Your vibe lifts us all, from lost to found. 🎶
+            `;
+        }
+    </script>
+</body>
+</html>
